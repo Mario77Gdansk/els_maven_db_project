@@ -8,6 +8,7 @@ Główne cele aplikacji to stworzyć bazę pytań i odpowiedzi
 
 
 ##What is to be done?
+
 0. Wykonanie schematu bazy danych.
 1. Dodawanie pytań oraz odpowiedzi (tworzenie "bazy wiedzy") z możliwością dodawania, usuwania i edycji pytań i odpowiedzi. Pytania powinny posiadać kategorię, oraz jeśli to możliwe, to również inne atrybuty umożliwiające grupowanie (np. kategorię/dziedzinę).
 2. Dodawanie użytkownika.
