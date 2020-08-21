@@ -27,7 +27,6 @@ To run this application:
 ```
 cd target
 java -jar applicationName.jar
-
 ```
 
 ##Authors
