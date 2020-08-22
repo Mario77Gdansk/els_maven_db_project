@@ -1,29 +1,33 @@
 package com.sda.javagda40.els_maven_db_project.model;
 
-import com.sun.javafx.beans.IDProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data // includes Getter, Setter, ToString, EqualsAndHashCode, RequestedArgsConstructor
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppUser { //POJO
+public class Category { //POJO
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
-    private String lastName;
+    private String categoryName;
 
-    @OneToOne
+    @ManyToOne
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private UserLoginData userLoginData;
+    private Subject subject;
 
-    public AppUser(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    @OneToMany(mappedBy = "category")
+    @EqualsAndHashCode.Exclude
+    private Set<Questions> questions;
+
+
+
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

@@ -35,14 +35,11 @@
 
 package com.sda.javagda40.els_maven_db_project.database;
 
-        import com.sda.javagda40.els_maven_db_project.model.AppUser;
-        import com.sun.tools.javac.file.Locations;
+        import com.sda.javagda40.els_maven_db_project.model.*;
         import org.hibernate.SessionFactory;
         import org.hibernate.boot.registry.StandardServiceRegistry;
         import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
         import org.hibernate.cfg.Configuration;
-
-        import javax.swing.plaf.synth.Region;
 
 public class HibernateUtil {
     private static Configuration getHibernateConfig() {
@@ -56,6 +53,11 @@ public class HibernateUtil {
         configuration.setProperty("hibernate.show_sql", "true"); // pokaże co jest pod spodem w sql
         configuration.setProperty("hibernate.connection.autocommit", "true"); // automatyczny committ
         configuration.addAnnotatedClass(AppUser.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
+        configuration.addAnnotatedClass(Category.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
+        configuration.addAnnotatedClass(Questions.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
+        configuration.addAnnotatedClass(Subject.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
+        configuration.addAnnotatedClass(LearningProcessList.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
+        configuration.addAnnotatedClass(UserLoginData.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
 //        configuration.addAnnotatedClass(Locations.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
 //        configuration.addAnnotatedClass(Departments.class); //wskazanie ścieżki do klasy entity jest właśnie tutaj
         return configuration;

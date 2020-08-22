@@ -16,16 +16,21 @@
 
         <!--DB schema will be updated if needed -->
         <!--Hibernate model to data definition language-->
-        <!--create - jeĹ›li ustawiony czyĹ›ci bazÄ™ danych przed uruchomieniem i od nowa tworzy tabele-->
-        <!--update - jeĹ›li ustawiony dopisuje brakujÄ…ce elementy/tabele/kolumny do bazy -->
-        <!--create-drop - uruchom connector, stwĂłrz tabele i kolumny, a po zakoĹ„czeniu aplikacji dropuj wszystkiego -->
-        <!--validate - weryfikuje poprawnoĹ›Ä‡ bazy -->
+        <!--create - jeśli ustawiony czyści bazę danych przed uruchomieniem i od nowa tworzy tabele-->
+        <!--update - jeśli ustawiony dopisuje brakujące elementy/tabele/kolumny do bazy -->
+        <!--create-drop - uruchom connector, stwórz tabele i kolumny, a po zakończeniu aplikacji dropuj wszystko -->
+        <!--validate - weryfikuje poprawność bazy -->
         <!--ustawienie definiuje czy hibernate ma sam stworzyć TABELE! -->
         <property name="hbm2ddl.auto">update</property> <!--czy zbudować tabele samemu?-->
-        <property name="show_sql">true</property>
+        <property name="show_sql">false</property>
 
         <!--TODO: na potem - dopisanie klas obsługiwanych przez hibernate -->
        <mapping class="com.sda.javagda40.els_maven_db_project.model.AppUser"/>
+        <mapping class="com.sda.javagda40.els_maven_db_project.model.Category"/>
+        <mapping class="com.sda.javagda40.els_maven_db_project.model.Questions"/>
+        <mapping class="com.sda.javagda40.els_maven_db_project.model.Subject"/>
+        <mapping class="com.sda.javagda40.els_maven_db_project.model.LearningProcessList"/>
+        <mapping class="com.sda.javagda40.els_maven_db_project.model.UserLoginData"/>
 
     </session-factory>
 </hibernate-configuration>
