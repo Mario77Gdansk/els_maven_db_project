@@ -30,7 +30,7 @@ public class SubjectDao {
             // do jakiej tabeli kierujemy nasze zapytanie?
             Root<Subject> rootTable = criteriaQuery.from(Subject.class);
 
-            // wykonanie zapytania
+            // wykonanie zapytania o subjectName z klasy Suybject
             criteriaQuery
                     .select(rootTable) // select * from rootTable
                     .where(

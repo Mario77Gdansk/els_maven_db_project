@@ -13,7 +13,7 @@ import java.util.List;
 
 //te dane są zaimportowane z git od Pawła
 public class AppUserDao {
-    public boolean existsUserWithLogin(String searchedLogin) {
+    public boolean existsUserWithLogin(String searchedName) {
         List<AppUser> list = new ArrayList<>();
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -33,7 +33,7 @@ public class AppUserDao {
             criteriaQuery
                     .select(rootTable) // select * from rootTable
                     .where(
-                            cb.equal(rootTable.get("login"), searchedLogin )
+                            cb.equal(rootTable.get("login"), searchedName )
                     );
 //            criteriaQuery
 //                    .select(rootTable)

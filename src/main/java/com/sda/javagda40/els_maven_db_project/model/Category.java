@@ -21,11 +21,9 @@ public class Category { //POJO
     @EqualsAndHashCode.Exclude
     private Subject subject;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     @EqualsAndHashCode.Exclude
     private Set<Questions> questions;
-
-
 
     public Category(String categoryName) {
         this.categoryName = categoryName;

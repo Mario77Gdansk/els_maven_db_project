@@ -16,7 +16,7 @@ public class UserLoginData {
     private Long id;
 
     private String userLogin;
-    private String UserPassword;
+    private String userPassword;
 
     @OneToOne
     @ToString.Exclude
@@ -26,6 +26,6 @@ public class UserLoginData {
 
     public UserLoginData(String userLogin, String userPassword) {
         this.userLogin = userLogin;
-        UserPassword = userPassword;
+        this.userPassword = userPassword;
     }
 }

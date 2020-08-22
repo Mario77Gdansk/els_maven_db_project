@@ -11,17 +11,13 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class LearningProcessList {
+public class LearningProcess {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public LearningProcessList(int mark, Date nextRepetition) {
-        this.mark = mark;
-        this.nextRepetition = nextRepetition;
-    }
-
     private int mark; //ocena za to konkretne pytanie
+
     private Date nextRepetition; //obliczona data następnej powtórki tego pytania
 
     @ManyToOne
@@ -29,6 +25,13 @@ public class LearningProcessList {
     @EqualsAndHashCode.Exclude
     private Questions questions;
 
+    @ManyToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private AppUser user;
 
-
+    public LearningProcess(int mark, Date nextRepetition) {
+        this.mark = mark;
+        this.nextRepetition = nextRepetition;
+    }
 }

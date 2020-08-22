@@ -1,6 +1,7 @@
 package com.sda.javagda40.els_maven_db_project.database;
 
-import com.sda.javagda40.els_maven_db_project.model.Category;
+import com.sda.javagda40.els_maven_db_project.model.AppUser;
+import com.sda.javagda40.els_maven_db_project.model.UserLoginData;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,10 +12,10 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-//te dane są przerobione z SubjectDao
-public class CategoryDao {
-    public List<Category> listCategories(String searchedCategory) {
-        List<Category> list = new ArrayList<>();
+//te dane są zaimportowane z git od Pawła
+public class LogUserDao {
+    public boolean existsUserWithLogin(String searchedLogin) {
+        List<UserLoginData> list = new ArrayList<>();
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
@@ -23,17 +24,17 @@ public class CategoryDao {
             CriteriaBuilder cb = session.getCriteriaBuilder();
 
             // obiekt reprezentujący zapytanie
-            CriteriaQuery<Category> criteriaQuery = cb.createQuery(Category.class);
+            CriteriaQuery<UserLoginData> criteriaQuery = cb.createQuery(UserLoginData.class);
 
             // obiekt reprezentujący tabelę bazodanową.
             // do jakiej tabeli kierujemy nasze zapytanie?
-            Root<Category> rootTable = criteriaQuery.from(Category.class);
+            Root<UserLoginData> rootTable = criteriaQuery.from(UserLoginData.class);
 
-            // wykonanie zapytania
+            // wykonanie zapytania o login z klasy UserLoginData
             criteriaQuery
                     .select(rootTable) // select * from rootTable
                     .where(
-                            cb.equal(rootTable.get("categoryName"), searchedCategory )
+                            cb.equal(rootTable.get("login"), searchedLogin )
                     );
 //            criteriaQuery
 //                    .select(rootTable)
@@ -53,6 +54,6 @@ public class CategoryDao {
         } catch (HibernateException he) {
             he.printStackTrace();
         }
-        return list;
+        return !list.isEmpty();
     }
 }

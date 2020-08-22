@@ -1,6 +1,8 @@
 package com.sda.javagda40.els_maven_db_project.database;
 
-import com.sda.javagda40.els_maven_db_project.model.Category;
+import com.sda.javagda40.els_maven_db_project.model.AppUser;
+import com.sda.javagda40.els_maven_db_project.model.LearningProcess;
+import com.sda.javagda40.els_maven_db_project.model.Subject;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,10 +13,10 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-//te dane są przerobione z SubjectDao
-public class CategoryDao {
-    public List<Category> listCategories(String searchedCategory) {
-        List<Category> list = new ArrayList<>();
+//te dane są przerobione z AppUserDao
+public class LearningProcessDao {
+    public List<LearningProcess> findWithClosestRepetitionDate(AppUser user) {
+        List<LearningProcess> list = new ArrayList<>();
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
@@ -23,18 +25,21 @@ public class CategoryDao {
             CriteriaBuilder cb = session.getCriteriaBuilder();
 
             // obiekt reprezentujący zapytanie
-            CriteriaQuery<Category> criteriaQuery = cb.createQuery(Category.class);
+            CriteriaQuery<LearningProcess> criteriaQuery = cb.createQuery(LearningProcess.class);
 
             // obiekt reprezentujący tabelę bazodanową.
             // do jakiej tabeli kierujemy nasze zapytanie?
-            Root<Category> rootTable = criteriaQuery.from(Category.class);
+            Root<LearningProcess> rootTable = criteriaQuery.from(LearningProcess.class);
 
-            // wykonanie zapytania
+            // wykonanie zapytania o NextRepetitionDate z klasy LearningProcess
             criteriaQuery
                     .select(rootTable) // select * from rootTable
                     .where(
-                            cb.equal(rootTable.get("categoryName"), searchedCategory )
-                    );
+                            cb.equal(rootTable.get("appUser"), user)
+                    ).orderBy(
+                    cb.asc(rootTable.get("nextRepetition")
+                    )
+            );
 //            criteriaQuery
 //                    .select(rootTable)
 //                    .where(
@@ -53,6 +58,7 @@ public class CategoryDao {
         } catch (HibernateException he) {
             he.printStackTrace();
         }
+
         return list;
     }
 }

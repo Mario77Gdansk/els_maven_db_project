@@ -17,21 +17,19 @@ public class Questions { //POJO
     private String question;
     private String answer;
 
-    public Questions(String question, String answer) {
-        this.question = question;
-        this.answer = answer;
-    }
-
 
     @ManyToOne
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Category category;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "questions", fetch = FetchType.EAGER)
     @EqualsAndHashCode.Exclude
-    private Set<LearningProcessList> learningProcessList;
+    private Set<LearningProcess> learningProcess;
 
 
-
+    public Questions(String question, String answer) {
+        this.question = question;
+        this.answer = answer;
+    }
 }

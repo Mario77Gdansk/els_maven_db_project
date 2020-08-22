@@ -19,7 +19,7 @@ public class Subject { //POJO
 
     private String subjectName;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(mappedBy = "subject", fetch = FetchType.EAGER)
     @EqualsAndHashCode.Exclude
     private Set<Category> categories;
 

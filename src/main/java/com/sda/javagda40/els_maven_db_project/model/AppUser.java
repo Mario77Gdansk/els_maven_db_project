@@ -1,9 +1,9 @@
 package com.sda.javagda40.els_maven_db_project.model;
 
-import com.sun.javafx.beans.IDProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data // includes Getter, Setter, ToString, EqualsAndHashCode, RequestedArgsConstructor
 @Entity
@@ -21,6 +21,11 @@ public class AppUser { //POJO
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private UserLoginData userLoginData;
+
+    @OneToMany (mappedBy = "user", fetch = FetchType.EAGER)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set <LearningProcess> learningProcess;
 
     public AppUser(String firstName, String lastName) {
         this.firstName = firstName;
