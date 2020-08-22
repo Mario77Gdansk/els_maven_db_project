@@ -1,5 +1,18 @@
 #ELS Maven DB Demo
-This application is a learning process support tool.
+Ten program jest wsparciem nauki pamięciowej z poziomu komputera.
+ Zakres i szczegółowość materiału zależy wyłącznie od wyobraźni użytkownika.
+  Wprowadzanie pytań i odpowiedzi leży po stronie użytkownika.
+
+##Prerequisities
+Projeks używa następujących technologii:
+- JDK 11
+- Hibernate
+- MySQL Connector
+
+Należy mież dosęp do bazy danych MySQL. Dostęp do bazy danych jest kontrolowany
+ przez plik konfiguracyjny znajdujący się w resources
+
+
 
 ## What does it do?
 Główne cele aplikacji to stworzyć bazę pytań i odpowiedzi
@@ -30,4 +43,4 @@ java -jar applicationName.jar
 ```
 
 ##Authors
-JavaGda40 SDA
+JavaGda40 Mariusz
