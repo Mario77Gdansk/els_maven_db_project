@@ -14,7 +14,7 @@ import java.util.List;
 
 //te dane są przerobione z AppUserDao
 public class SubjectDao {
-    public boolean existsUserWithLogin(String searchedSubject) {
+    public boolean existSubjectWithName(String searchedSubject) {
         List<Subject> list = new ArrayList<>();
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

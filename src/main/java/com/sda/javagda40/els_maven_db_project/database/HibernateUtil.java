@@ -13,7 +13,7 @@ public class HibernateUtil {
     // blok statyczny - fragment kodu który wykonuje się 1 raz przy starcie klasy
     static {
         try {
-            System.out.println("Konfiguruję hibernate. D tego miejsca mi działa czyli jestem w HibernateUtil wiersz 16");
+            System.out.println("Konfiguruję hibernate.");
 
             /// ta klasa domyślnie odwołuje się do pliku konfiguracyjnego hibernate w formacie podanym w resources
             Configuration configuration = new Configuration();

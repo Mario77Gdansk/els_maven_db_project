@@ -11,9 +11,9 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-//te dane są zaimportowane z git od Pawła
+//te dane są zaimportowane z git od Pawła i przerobione na potrzeby swojego kodu
 public class AppUserDao {
-    public boolean existsUserWithLogin(String searchedName) {
+    public boolean existsUserWithNameAndSurname(String searchedFirstName, String serachedLastName) {
         List<AppUser> list = new ArrayList<>();
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -33,8 +33,12 @@ public class AppUserDao {
             criteriaQuery
                     .select(rootTable) // select * from rootTable
                     .where(
-                            cb.equal(rootTable.get("login"), searchedName )
+                            cb.and(
+                            cb.equal(rootTable.get("firstName"), searchedFirstName ),
+                            cb.equal(rootTable.get("lastName"), serachedLastName)
+                            )
                     );
+            // poniżej dodany jest bardziej rozudowany model criteriaQuery
 //            criteriaQuery
 //                    .select(rootTable)
 //                    .where(

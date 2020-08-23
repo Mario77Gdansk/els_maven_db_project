@@ -1,15 +1,13 @@
 package com.sda.javagda40.els_maven_db_project.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Data // includes Getter, Setter, ToString, EqualsAndHashCode, RequestedArgsConstructor
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Subject { //POJO
