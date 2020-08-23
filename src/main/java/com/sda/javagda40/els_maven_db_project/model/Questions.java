@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Data // includes Getter, Setter, ToString, EqualsAndHashCode, RequestedArgsConstructor
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Questions { //POJO

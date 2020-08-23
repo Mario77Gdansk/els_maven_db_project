@@ -21,6 +21,7 @@ public class SubjectHandler {
         Subject subject = Subject.builder()
                 .subjectName(words[2])
                 .build();
+        subjectEntityDao.saveOrUpdate(subject);
        }
 
     private void handleListSubject() {

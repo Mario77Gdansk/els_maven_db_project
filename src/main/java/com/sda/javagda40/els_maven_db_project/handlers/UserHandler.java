@@ -23,6 +23,7 @@ public class UserHandler {
                 .firstName(words[2])
                 .lastName(words[3])
                 .build();
+        appUserEntityDao.saveOrUpdate(appUser);
     }
 
     private void handleListUsers() {
